@@ -99,6 +99,10 @@ def main() -> None:
     )
 
     with st.sidebar:
+        st.subheader("À propos")
+        st.write("Créé par Aicha, alias diqraa.")
+        st.markdown("[Me contacter par e-mail](mailto:aicha.dabo@etu.u-pec.fr)")
+        st.divider()
         st.header("Documents")
         if SOURCE_DIR.is_dir():
             pdf_files = sorted(SOURCE_DIR.rglob("*.pdf"))
