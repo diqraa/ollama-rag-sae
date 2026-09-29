@@ -63,3 +63,7 @@ python -m streamlit run src/web_app.py
 L'ancienne interface en terminal reste disponible avec `python -m src.chatbot`. Pour reconstruire l'index depuis le terminal, utilisez `python -m src.chatbot --rebuild`.
 
 Cliquez sur **Clear cache** dans le menu Streamlit pour vider les ressources mises en cache en mémoire. L'index persistant sur disque est conservé.
+
+
+<img width="1194" height="718" alt="image" src="https://github.com/user-attachments/assets/19f1e6ed-0174-4c87-87f3-10cfe101504c" />
+
