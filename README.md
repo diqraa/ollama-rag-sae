@@ -65,5 +65,6 @@ L'ancienne interface en terminal reste disponible avec `python -m src.chatbot`. 
 Cliquez sur **Clear cache** dans le menu Streamlit pour vider les ressources mises en cache en mémoire. L'index persistant sur disque est conservé.
 
 
-<img width="1194" height="718" alt="image" src="https://github.com/user-attachments/assets/19f1e6ed-0174-4c87-87f3-10cfe101504c" />
+<img width="1189" height="777" alt="image" src="https://github.com/user-attachments/assets/95e65aac-80a2-4663-ad16-76ead734e2c1" />
+
 
