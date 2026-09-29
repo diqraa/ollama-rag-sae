@@ -28,10 +28,11 @@ Grâce à une architecture **RAG** et au modèle **Llama 3**, ce chatbot fournit
 
 Prérequis : Python 3.10+ et [Ollama](https://ollama.com) installé et démarré.
 
-1. Installez les dépendances Python :
+1. À la racine du dépôt, créez un environnement Python local et installez les dépendances :
 
    ```powershell
-   python -m pip install -r requirements.txt
+   python -m venv .venv
+   .\.venv\Scripts\python.exe -m pip install -r requirements.txt
    ```
 
 2. Téléchargez les deux modèles nécessaires :
@@ -41,12 +42,12 @@ Prérequis : Python 3.10+ et [Ollama](https://ollama.com) installé et démarré
    ollama pull nomic-embed-text
    ```
 
-3. Placez les PDF officiels dans `data/sources_pdfs` (les sous-dossiers sont également parcourus). L'ancien chemin `data/source_pdfs` est aussi reconnu.
+3. La présentation est déjà fournie dans `data/source_pdfs`. Ajoutez les autres PDF officiels dans ce dossier ou dans ses sous-dossiers.
 
 4. À la racine du projet, lancez l'interface web :
 
    ```powershell
-   python -m streamlit run src/web_app.py
+   .\.venv\Scripts\python.exe -m streamlit run src/web_app.py
    ```
 
 Streamlit ouvre l'interface dans le navigateur et affiche son adresse locale, généralement **http://localhost:8501**, dans le terminal. Clique sur ce lien si le navigateur ne s'ouvre pas automatiquement. Si un modèle Ollama manque, la page indique la commande `ollama pull` nécessaire.
@@ -57,9 +58,9 @@ Pour imposer un dossier PDF ou un autre modèle, définissez les variables d'env
 
 ```powershell
 $env:SAE_SOURCE_DIR = "data\sources_pdfs"
-python -m streamlit run src/web_app.py
+.\.venv\Scripts\python.exe -m streamlit run src/web_app.py
 ```
 
-L'ancienne interface en terminal reste disponible avec `python -m src.chatbot`. Pour reconstruire l'index depuis le terminal, utilisez `python -m src.chatbot --rebuild`.
+L'ancienne interface en terminal reste disponible avec `.\.venv\Scripts\python.exe -m src.chatbot`. Pour reconstruire l'index depuis le terminal, utilisez `.\.venv\Scripts\python.exe -m src.chatbot --rebuild`.
 
 Cliquez sur **Clear cache** dans le menu Streamlit pour vider les ressources mises en cache en mémoire. L'index persistant sur disque est conservé.
