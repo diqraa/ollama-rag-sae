@@ -35,4 +35,4 @@ def charger_et_decouper_documents(directory_path):
 
 if __name__ == "__main__":
     SOURCE_DIR = os.path.join("data", "source_pdfs")
-    chunks_generes = charger_et_decouper_documents(SOURCE_DIR)
+    
