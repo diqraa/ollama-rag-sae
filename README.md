@@ -1,6 +1,6 @@
 # Local RAG Chatbot - Accompagnement pour la SAE Informatique (BUT2)
 
-Ce projet est un chatbot **gratuit, local et confidentiel** conçu pour aider les étudiants de deuxième année de BUT Informatique à retrouver les informations utiles dans leurs documents de SAE. Les PDF sont indexés localement dans Chroma et les réponses sont générées par Ollama.
+Ce projet est un chatbot **gratuit, local et confidentiel** conçu pour aider les étudiants de  BUT Informatique à retrouver les informations utiles dans leurs documents de SAE. Les PDF sont indexés localement dans Chroma et les réponses sont générées par Ollama.
 
 Grâce à une architecture **RAG** et au modèle **Llama 3**, ce chatbot fournit des réponses instantanées et précises en se basant exclusivement sur les documents officiels du projet.
 
