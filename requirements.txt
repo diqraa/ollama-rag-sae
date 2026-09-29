@@ -1,0 +1,1 @@
+(echo langchain==0.3.0 && echo langchain-community==0.3.0 && echo chromadb==0.5.5 && echo pypdf==4.3.1 && echo ollama==0.3.3) > requirements.txt
