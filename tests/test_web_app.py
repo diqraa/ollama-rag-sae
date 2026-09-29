@@ -24,6 +24,13 @@ class WebAppTests(unittest.TestCase):
         self.assertIn("Assistant SAE", app.title[0].value)
         self.assertEqual(len(app.chat_input), 1)
         self.assertFalse(app.chat_input[0].disabled)
+        sidebar_markdown = [element.value for element in app.sidebar.markdown]
+        self.assertTrue(
+            any("Créé par Aicha, alias diqraa." in value for value in sidebar_markdown)
+        )
+        self.assertTrue(
+            any("aicha.dabo@etu.u-pec.fr" in value for value in sidebar_markdown)
+        )
 
     def test_page_disables_chat_when_no_pdf_is_available(self):
         with tempfile.TemporaryDirectory() as temp_dir:

@@ -15,7 +15,7 @@ Grâce à une architecture **RAG** et au modèle **Llama 3**, ce chatbot fournit
 * **Modèle de langage :** Llama 3 via [Ollama](https://ollama.com)
 * **Embeddings :** `nomic-embed-text` via Ollama
 * **Recherche vectorielle :** ChromaDB, avec index persistant localement
-* **Sources :** fichiers PDF placés dans `data/sources_pdfs`
+* **Sources :** fichiers PDF placés dans `data/source_pdfs`
 
 ## Fonctionnalités
 
@@ -23,6 +23,12 @@ Grâce à une architecture **RAG** et au modèle **Llama 3**, ce chatbot fournit
 * L'assistant indique quand les documents ne permettent pas de répondre et ne doit pas inventer de consignes.
 * Les PDF, l'index et l'historique de conversation restent sur la machine ; les appels au modèle sont adressés uniquement à Ollama sur `localhost`, sans télémétrie Chroma ni collecte d'usage Streamlit.
 * Une interface web locale permet de discuter avec le chatbot depuis un navigateur.
+
+## À propos
+
+Créé par **Aicha**, alias **diqraa**. Pour plus d'informations, [contacte-moi par e-mail](mailto:aicha.dabo@etu.u-pec.fr).
+
+La capture d'écran du chatbot pourra être ajoutée dans `docs/images/chatbot.png`.
 
 ## Installation et lancement
 
@@ -57,7 +63,7 @@ Au premier lancement, les PDF sont découpés et indexés lorsque la première q
 Pour imposer un dossier PDF ou un autre modèle, définissez les variables d'environnement `SAE_SOURCE_DIR`, `SAE_CHAT_MODEL` ou `SAE_EMBEDDING_MODEL` avant le lancement. Par exemple :
 
 ```powershell
-$env:SAE_SOURCE_DIR = "data\sources_pdfs"
+$env:SAE_SOURCE_DIR = "data\source_pdfs"
 .\.venv\Scripts\python.exe -m streamlit run src/web_app.py
 ```
 
