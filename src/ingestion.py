@@ -1,38 +1,44 @@
-import os
+from pathlib import Path
+
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-def charger_et_decouper_documents(directory_path):
-    """
-    1. Vérifie si le dossier existe et contient des fichiers PDF.
-    2. Charge les documents PDF.
-    3. Découpe les documents en blocs de texte (chunks) pour garder le contexte
-    4. Retourne la liste des chunks générés.
-    """
-    # Vérification de l'existence du dossier de documents
-    if not os.path.exists(directory_path) or not os.listdir(directory_path):
-        print(f" Le dossier '{directory_path}' est vide ou n'existe pas.")
-        print(" Déposez vos PDF de consignes de SAE dedans avant le lancement du script.")
-        return []
 
-    print(f" Chargement des documents depuis : {directory_path}...")
-    loader = PyPDFDirectoryLoader(directory_path)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_SOURCE_DIR = PROJECT_ROOT / "data" / "sources_pdfs"
+LEGACY_SOURCE_DIR = PROJECT_ROOT / "data" / "source_pdfs"
+if not DEFAULT_SOURCE_DIR.is_dir() and LEGACY_SOURCE_DIR.is_dir():
+    DEFAULT_SOURCE_DIR = LEGACY_SOURCE_DIR
+
+
+def charger_et_decouper_documents(directory_path: str | Path):
+    """Charge les PDF d'un répertoire et les découpe en passages avec métadonnées."""
+    directory = Path(directory_path)
+    if not directory.is_dir():
+        raise FileNotFoundError(
+            f"Le dossier de documents '{directory}' n'existe pas. "
+            "Ajoutez les PDF de SAE dans data/sources_pdfs."
+        )
+
+    pdf_files = list(directory.rglob("*.pdf"))
+    if not pdf_files:
+        raise ValueError(
+            f"Aucun PDF trouvé dans '{directory}'. "
+            "Ajoutez les PDF de SAE dans data/sources_pdfs."
+        )
+
+    loader = PyPDFDirectoryLoader(str(directory), recursive=True)
     documents = loader.load()
-    print(f" {len(documents)} pages de documents chargées avec succès.")
-
-    # Configuration du découpage (Chunking) pour garder le contexte des consignes
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,       # Taille idéale pour que Llama 3 traite bien l'information
-        chunk_overlap=150,     # Chevauchement pour ne pas couper une phrase importante en deux
-        length_function=len
+        chunk_size=800,
+        chunk_overlap=150,
+        length_function=len,
     )
 
-    print(" Découpage en chunks")
     chunks = text_splitter.split_documents(documents)
-    print(f"Nombre total de blocs générés : {len(chunks)}")
-    
-    return chunks
+    if not chunks:
+        raise ValueError(
+            f"Aucun texte exploitable n'a été extrait des PDF dans '{directory}'."
+        )
 
-if __name__ == "__main__":
-    SOURCE_DIR = os.path.join("data", "source_pdfs")
-    
+    return chunks
