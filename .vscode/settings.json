@@ -1,0 +1,11 @@
+{
+    "commentTranslate.hover.enabled": false,
+    "commentTranslate.targetLanguage": "fr",
+    "netbeans.jdkhome": "c:\\Users\\Aicha\\Documents\\oracleJdk-27",
+    "netbeans.project.jdkhome": "c:\\Users\\Aicha\\Documents\\oracleJdk-27",
+    "terminal.integrated.env.windows": {
+        "GRAALVM_HOME": "",
+        "JAVA_HOME": "c:\\Users\\Aicha\\Documents\\oracleJdk-27",
+        "PATH": "c:\\Users\\Aicha\\Documents\\oracleJdk-27\\bin;${env:PATH}"
+    }
+}
