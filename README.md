@@ -29,4 +29,4 @@ Pour faire tourner ce projet localement, vous aurez besoin de :
 * [Ollama](https://ollama.com "Ollama download") installé avec le modèle Llama 3 (`ollama run llama3`)
 * Vos documents de SAE au format PDF ou texte placés dans le dossier de données source.
 
-  ##BON COURAGE !
+ **BON COURAGE !**
