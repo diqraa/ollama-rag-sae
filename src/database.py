@@ -2,7 +2,7 @@ import os
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import Chroma
 # Importation directe de votre fonction depuis votre fichier ingestion.py
-from .ingestion import charger_et_decouper_documents
+from src.ingestion import charger_et_decouper_documents
 
 SOURCE_DIR = os.path.join("data", "source_pdfs")
 VECTOR_DB_DIR = os.path.join("data", "vector_db")
